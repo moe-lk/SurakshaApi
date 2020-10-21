@@ -18,17 +18,22 @@
         "http"
     ],
     "paths": {
-        "/api/search-student": {
+        "/api/student/{nsid}": {
             "get": {
                 "tags": [
-                    "admins"
+                    "student"
                 ],
-                "summary": "Get student details for the claim",
-                "operationId": "searchStudent",
+                "summary": "Search student by NSID",
+                "description": "Returns a single student for the provided NSID",
+                "operationId": "getStudentByNSID",
+                "produces": [
+                    "application/json"
+                ],
                 "parameters": [
                     {
                         "name": "nsid",
                         "in": "path",
+                        "description": "NSID of the student to return",
                         "required": true,
                         "type": "string"
                     }
@@ -37,16 +42,21 @@
                     "200": {
                         "description": "Student found"
                     },
+                    "400": {
+                        "description": "Invalid NSID provided"
+                    },
                     "404": {
                         "description": "Student not found"
-                    },
-                    "406": {
-                        "description": "Invalid NSID"
                     },
                     "500": {
                         "description": "Internal server error"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
             }
         }
     },
