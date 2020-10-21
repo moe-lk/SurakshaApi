@@ -1,4 +1,8 @@
-# Suraksha Api
+# Suraksha API
+
+
+## Overview
+The Suraksha API will connect the Sri Lanka Insurance Corporation’s (SLIC) system and Student Information System of Ministry of Education, Sri Lanka to make the claiming processes easier and accurate. The main Objective of the Suraksha API is to provide SLIC with necessary information from the Students Information System (SIS) database and store the claim details in the SIS database.
 
 
 ### Setting-up the server
@@ -29,6 +33,7 @@ composer install
 php artisan key:generate
 ```
 
+
 ### Running the server
 To run the server, run:
 
@@ -36,14 +41,16 @@ To run the server, run:
 php artisan serve
 ```
 
+
 ### To view the application:
 
 ```
-open http://localhost:8000
+open http://127.0.0.1:8000
 ```
+
 
 ### To view the Swagger UI interface:
 
 ```
-open http://localhost:8000/api/documentation
+open http://127.0.0.1:8000/api/documentation
 ```
