@@ -1,7 +1,7 @@
 # Suraksha Api
 
 
-### Setup the server
+### Setting-up the server
 To run the server, first a setup is needed:
 
 (1) Copy `.env.example` file and paste to the same root directory.
@@ -17,16 +17,20 @@ SWAGGER_VERSION=2.0
 L5_SWAGGER_CONST_HOST=127.0.0.1:8000
 ```
 
-### Running the server
-To run the server, run:
+(4) To install `Composer`, run:
 
 ```
 composer install
 ```
 
+(5) To generate the `APP_KEY`, run:
+
 ```
 php artisan key:generate
 ```
+
+### Running the server
+To run the server, run:
 
 ```
 php artisan serve
