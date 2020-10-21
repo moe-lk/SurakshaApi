@@ -8,7 +8,7 @@ To run the server, first a setup is needed:
 
 (2) Change the copied file to `.env`.
 
-(3) Add the following lines at the end of the .env file.
+(3) Add the following lines at the end of the `.env` file.
 
 ```
 L5_SWAGGER_GENERATE_ALWAYS=true
