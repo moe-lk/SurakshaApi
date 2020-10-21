@@ -1,27 +1,33 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "L5 Swagger API",
-        "description": "L5 Swagger API description",
+        "title": "Suraksha API",
+        "description": "Suraksha API Documentation",
         "contact": {
             "email": "your-email@domain.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
         "version": "1.0.0"
     },
     "host": "127.0.0.1:8000",
     "basePath": "",
     "schemes": [
-        "http",
-        "https"
+        "http"
     ],
     "paths": {
-        "/api/testing/{mytest}": {
+        "/api/search-student": {
             "get": {
-                "summary": "Get Testing",
-                "operationId": "testing",
+                "tags": [
+                    "admins"
+                ],
+                "summary": "Get student details for the claim",
+                "operationId": "searchStudent",
                 "parameters": [
                     {
-                        "name": "mytest",
+                        "name": "nsid",
                         "in": "path",
                         "required": true,
                         "type": "string"
@@ -29,13 +35,16 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "successful operation"
+                        "description": "Student found"
+                    },
+                    "404": {
+                        "description": "Student not found"
                     },
                     "406": {
-                        "description": "not acceptable"
+                        "description": "Invalid NSID"
                     },
                     "500": {
-                        "description": "internal server error"
+                        "description": "Internal server error"
                     }
                 }
             }
