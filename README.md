@@ -5,7 +5,9 @@
 To run the server, first a setup is needed:
 
 (1) Copy `.env.example` file and paste to the same root directory.
+
 (2) Change the copied file to `.env`.
+
 (3) Add the following lines at the end of the .env file.
 
 ```
@@ -33,7 +35,7 @@ php artisan serve
 ### To view the application:
 
 ```
-open http://localhost:8080/docs
+open http://localhost:8080
 ```
 
 ### To view the Swagger UI interface:
