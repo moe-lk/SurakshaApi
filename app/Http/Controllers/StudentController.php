@@ -26,6 +26,6 @@ class StudentController extends Controller
      *
      */
     public function searchStudent(Request $request){
-        echo $request->nsid;
+        //
     }
 }
