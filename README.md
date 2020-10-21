@@ -35,11 +35,11 @@ php artisan serve
 ### To view the application:
 
 ```
-open http://localhost:8080
+open http://localhost:8000
 ```
 
 ### To view the Swagger UI interface:
 
 ```
-open http://localhost:8080/api/documentation
+open http://localhost:8000/api/documentation
 ```
