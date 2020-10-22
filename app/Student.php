@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @SWG\Definition(required={"name"}, type="object")
+ * @SWG\Definition(required={"nsid"}, type="object")
  */
 class Student extends Model
 {
