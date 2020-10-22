@@ -19,7 +19,7 @@ class Student extends Model
      * @SWG\Property(example="Example School, Area.")
      * @var string
      */
-    public $school;
+    private $school;
 
     /**
      * @SWG\Property(example="00000", format="int32")
@@ -43,7 +43,7 @@ class Student extends Model
      * @SWG\Property(example="2000-01-15", format="date")
      * @var string
      */
-    public $dob;
+    private $dob;
 
     /**
      * @SWG\Property(example="Jane Doe")
