@@ -2,7 +2,7 @@
 
 
 ## Overview
-The Suraksha API will connect the Sri Lanka Insurance Corporation’s (SLIC) system and Student Information System of Ministry of Education, Sri Lanka to make the claiming processes easier and accurate. The main Objective of the Suraksha API is to provide SLIC with necessary information from the Students Information System (SIS) database and store the claim details in the SIS database.
+The Suraksha API will connect the Sri Lanka Insurance Corporation’s (SLIC) system and Student Information System of Ministry of Education, Sri Lanka to make the claiming processes easier and accurate. The main Objective of the Suraksha API is to provide SLIC with necessary information from the Student Information System (SIS) database and store the claim details in the SIS database.
 
 
 ### Setting-up the server
