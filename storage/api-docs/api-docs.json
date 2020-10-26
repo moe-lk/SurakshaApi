@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Suraksha API",
-        "description": "Suraksha API Documentation",
+        "description": "The `Suraksha API` will connect the `Sri Lanka Insurance Corporation\u2019s (SLIC) system` and `Student Information System (SIS) of Ministry of Education, Sri Lanka` to make the claiming processes easier and accurate. The main Objective of the `Suraksha API` is to provide `SLIC` with necessary information from the `SIS` database and store the claim details in the `SIS` database.",
         "contact": {
             "email": "your-email@domain.com"
         },
@@ -105,10 +105,12 @@
         "Claim": {
             "required": [
                 "id",
-                "date",
+                "incidentDate",
+                "reqestedDate",
+                "enteredDate",
                 "type",
-                "amount",
-                "paymentMethod",
+                "requestedAmount",
+                "paidAmount",
                 "payeeAddress"
             ],
             "properties": {
@@ -116,10 +118,20 @@
                     "type": "string",
                     "example": "SLIC-00000"
                 },
-                "date": {
+                "incidentDate": {
                     "type": "string",
                     "format": "date",
                     "example": "2020-01-15"
+                },
+                "reqestedDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2020-01-20"
+                },
+                "enteredDate": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2020-01-25"
                 },
                 "type": {
                     "type": "string",
@@ -129,14 +141,15 @@
                     "type": "string",
                     "example": "Claim description - If any"
                 },
-                "amount": {
+                "requestedAmount": {
                     "type": "integer",
-                    "format": "int32",
+                    "format": "int64",
                     "example": "100000"
                 },
-                "paymentMethod": {
-                    "type": "string",
-                    "example": "Cash"
+                "paidAmount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "100000"
                 },
                 "paymentReceiversName": {
                     "type": "string",
@@ -144,11 +157,16 @@
                 },
                 "paymentReceiversNIC": {
                     "type": "string",
-                    "example": "123456789 V"
+                    "example": "123456789V"
                 },
                 "payeeAddress": {
                     "type": "string",
                     "example": "Example Address, Area."
+                },
+                "status": {
+                    "type": "integer",
+                    "format": "int8",
+                    "example": "0"
                 },
                 "nsid": {
                     "type": "string",
@@ -163,7 +181,11 @@
                     "format": "int32",
                     "example": "00000"
                 },
-                "name": {
+                "nameWithInitials": {
+                    "type": "string",
+                    "example": "J. Smith"
+                },
+                "fullName": {
                     "type": "string",
                     "example": "John Smith"
                 },
@@ -183,7 +205,7 @@
                 },
                 "mothersNIC": {
                     "type": "string",
-                    "example": "123456789 V"
+                    "example": "123456789V"
                 },
                 "fathersName": {
                     "type": "string",
@@ -191,7 +213,7 @@
                 },
                 "fathersNIC": {
                     "type": "string",
-                    "example": "123456789 V"
+                    "example": "123456789V"
                 },
                 "guardiansName": {
                     "type": "string",
@@ -218,7 +240,11 @@
                     "format": "int32",
                     "example": "00000"
                 },
-                "name": {
+                "nameWithInitials": {
+                    "type": "string",
+                    "example": "J. Smith"
+                },
+                "fullName": {
                     "type": "string",
                     "example": "John Smith"
                 },
@@ -238,7 +264,7 @@
                 },
                 "mothersNIC": {
                     "type": "string",
-                    "example": "123456789 V"
+                    "example": "123456789V"
                 },
                 "fathersName": {
                     "type": "string",
@@ -246,7 +272,7 @@
                 },
                 "fathersNIC": {
                     "type": "string",
-                    "example": "123456789 V"
+                    "example": "123456789V"
                 },
                 "guardiansName": {
                     "type": "string",
