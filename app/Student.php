@@ -28,10 +28,16 @@ class Student extends Model
     public $censusNo;
 
     /**
+     * @SWG\Property(example="J. Smith")
+     * @var string
+     */
+    public $nameWithInitials;
+
+    /**
      * @SWG\Property(example="John Smith")
      * @var string
      */
-    public $name;
+    public $fullName;
 
     /**
      * @SWG\Property(example="00000", format="int32")
@@ -52,7 +58,7 @@ class Student extends Model
     public $mothersName;
 
     /**
-     * @SWG\Property(example="123456789 V")
+     * @SWG\Property(example="123456789V")
      * @var string
      */
     public $mothersNIC;
@@ -64,7 +70,7 @@ class Student extends Model
     public $fathersName;
 
     /**
-     * @SWG\Property(example="123456789 V")
+     * @SWG\Property(example="123456789V")
      * @var string
      */
     public $fathersNIC;
