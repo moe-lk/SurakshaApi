@@ -5,7 +5,7 @@ namespace App;
 use App\Student;
 
 /**
- * @SWG\Definition(required={"id", "date", "type", "amount", "paymentMethod", "payeeAddress"}, type="object")
+ * @SWG\Definition(required={"id", "incidentDate", "reqestedDate", "enteredDate", "type", "requestedAmount", "paidAmount", "payeeAddress"}, type="object")
  */
 class Claim extends Student
 {
@@ -19,7 +19,19 @@ class Claim extends Student
      * @SWG\Property(example="2020-01-15", format="date")
      * @var string
      */
-    public $date;
+    public $incidentDate;
+
+    /**
+     * @SWG\Property(example="2020-01-20", format="date")
+     * @var string
+     */
+    public $reqestedDate;
+
+    /**
+     * @SWG\Property(example="2020-01-25", format="date")
+     * @var string
+     */
+    public $enteredDate;
 
     /**
      * @SWG\Property(example="Residential")
@@ -34,16 +46,16 @@ class Claim extends Student
     public $description;
 
     /**
-     * @SWG\Property(example="100000", format="int32")
+     * @SWG\Property(example="100000", format="int64")
      * @var int
      */
-    public $amount;
+    public $requestedAmount;
 
     /**
-     * @SWG\Property(example="Cash")
-     * @var string
+     * @SWG\Property(example="100000", format="int64")
+     * @var int
      */
-    public $paymentMethod;
+    public $paidAmount;
 
     /**
      * @SWG\Property(example="John Doe")
@@ -52,7 +64,7 @@ class Claim extends Student
     public $paymentReceiversName;
 
     /**
-     * @SWG\Property(example="123456789 V")
+     * @SWG\Property(example="123456789V")
      * @var string
      */
     public $paymentReceiversNIC;
@@ -62,4 +74,10 @@ class Claim extends Student
      * @var string
      */
     public $payeeAddress;
+
+    /**
+     * @SWG\Property(example="0", format="int8")
+     * @var int
+     */
+    public $status;
 }
