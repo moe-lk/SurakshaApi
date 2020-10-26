@@ -15,7 +15,7 @@ use Illuminate\Routing\Controller as BaseController;
  *     @SWG\Info(
  *         version="1.0.0",
  *         title="Suraksha API",
- *         description="The `Suraksha API` will connect the `Sri Lanka Insurance Corporation’s (SLIC) system` and `Student Information System (SIS) of Ministry of Education, Sri Lanka` to make the claiming processes easier and accurate. The main Objective of the `Suraksha API` is to provide `SLIC` with necessary information from the `SIS` database and store the claim details in the `SIS` database.",
+ *         description="The `Suraksha API` will connect the `Sri Lanka Insurance Corporation’s (SLIC) system` and `Student Information System (SIS) of the Ministry of Education, Sri Lanka` to make the claiming processes easier and accurate. The main Objective of the `Suraksha API` is to provide `SLIC` with necessary information from the `SIS` database and store the claim details in the `SIS` database.",
  *         @SWG\Contact(
  *             email="your-email@domain.com"
  *         ),
