@@ -31,10 +31,8 @@ class StudentController extends Controller
      *     security={{"api_key": {}}}
      * )
      */
-    public function getStudentByNSID(Request $request){
-        try {
-            $nsid = $request->input('nsid');
-        
+    public function getStudentByNSID($nsid){
+        try {        
             $student = DB::table('security_users')->where('openemis_no', $nsid)->first();
     
             if(!$student) return $this->_sendResponse("Invalid NSID provided or Student not found", 404);
