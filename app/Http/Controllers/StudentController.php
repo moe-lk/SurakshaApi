@@ -50,8 +50,8 @@ class StudentController extends Controller
             $student_data->censusNo = $institution->code;
             $student_data->nameWithInitials = $student->last_name;
             $student_data->fullName = $student->first_name;
-            $student_data->admissionNo = $nsid;
-            $student_data->dob = $nsid;
+            $student_data->admissionNo = $institution_student->admission_id;
+            $student_data->dob = $student->date_of_birth;
             $student_data->mothersName = null;
             $student_data->mothersNIC = null;
             $student_data->fathersName = null;
