@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "Suraksha API",
-        "description": "The `Suraksha API` will connect the `Sri Lanka Insurance Corporation\u2019s (SLIC) system` and `Student Information System (SIS) of Ministry of Education, Sri Lanka` to make the claiming processes easier and accurate. The main Objective of the `Suraksha API` is to provide `SLIC` with necessary information from the `SIS` database and store the claim details in the `SIS` database.",
+        "description": "The `Suraksha API` will connect the `Sri Lanka Insurance Corporation\u2019s (SLIC) system` and `Student Information System (SIS) of the Ministry of Education, Sri Lanka` to make the claiming processes easier and accurate. The main Objective of the `Suraksha API` is to provide `SLIC` with necessary information from the `SIS` database and store the claim details in the `SIS` database.",
         "contact": {
             "email": "your-email@domain.com"
         },
@@ -18,7 +18,7 @@
         "http"
     ],
     "paths": {
-        "/api/claim": {
+        "/api/claim/add": {
             "post": {
                 "tags": [
                     "claim"
@@ -51,12 +51,12 @@
                         }
                     },
                     "405": {
-                        "description": "Invalid input"
+                        "description": "Failed to add the claim"
                     }
                 }
             }
         },
-        "/api/student/{nsid}": {
+        "/api/student{nsid}": {
             "get": {
                 "tags": [
                     "student"
@@ -83,11 +83,8 @@
                             "$ref": "#/definitions/Student"
                         }
                     },
-                    "400": {
-                        "description": "Invalid NSID provided"
-                    },
                     "404": {
-                        "description": "Student not found"
+                        "description": "Invalid NSID provided or Student not found"
                     },
                     "500": {
                         "description": "Internal server error"
@@ -114,110 +111,110 @@
                 "payeeAddress"
             ],
             "properties": {
-                "id": {
+                "claim_id": {
                     "type": "string",
                     "example": "SLIC-00000"
-                },
-                "incidentDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2020-01-15"
-                },
-                "reqestedDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2020-01-20"
-                },
-                "enteredDate": {
-                    "type": "string",
-                    "format": "date",
-                    "example": "2020-01-25"
-                },
-                "type": {
-                    "type": "string",
-                    "example": "Residential"
-                },
-                "description": {
-                    "type": "string",
-                    "example": "Claim description - If any"
-                },
-                "requestedAmount": {
-                    "type": "integer",
-                    "format": "int64",
-                    "example": "100000"
-                },
-                "paidAmount": {
-                    "type": "integer",
-                    "format": "int64",
-                    "example": "100000"
-                },
-                "paymentReceiversName": {
-                    "type": "string",
-                    "example": "John Doe"
-                },
-                "paymentReceiversNIC": {
-                    "type": "string",
-                    "example": "123456789V"
-                },
-                "payeeAddress": {
-                    "type": "string",
-                    "example": "Example Address, Area."
-                },
-                "status": {
-                    "type": "integer",
-                    "format": "int8",
-                    "example": "0"
                 },
                 "nsid": {
                     "type": "string",
                     "example": "ABC-123-000"
                 },
-                "school": {
-                    "type": "string",
-                    "example": "Example School, Area."
-                },
-                "censusNo": {
-                    "type": "integer",
-                    "format": "int32",
-                    "example": "00000"
-                },
-                "nameWithInitials": {
+                "student_name_with_initials": {
                     "type": "string",
                     "example": "J. Smith"
                 },
-                "fullName": {
+                "student_full_name": {
                     "type": "string",
                     "example": "John Smith"
                 },
-                "admissionNo": {
-                    "type": "integer",
-                    "format": "int32",
-                    "example": "00000"
-                },
-                "dob": {
+                "student_date_of_birth": {
                     "type": "string",
                     "format": "date",
                     "example": "2000-01-15"
                 },
-                "mothersName": {
+                "mothers_name": {
                     "type": "string",
                     "example": "Jane Doe"
                 },
-                "mothersNIC": {
+                "mothers_nic": {
                     "type": "string",
                     "example": "123456789V"
                 },
-                "fathersName": {
+                "fathers_name": {
                     "type": "string",
                     "example": "John Doe"
                 },
-                "fathersNIC": {
+                "fathers_nic": {
                     "type": "string",
                     "example": "123456789V"
                 },
-                "guardiansName": {
+                "legal_guardians_name": {
                     "type": "string",
                     "example": "Legal Guardian's name - If any"
+                },
+                "incident_date": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2020-01-15"
+                },
+                "claim_requested_date": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2020-01-20"
+                },
+                "claim_entered_date": {
+                    "type": "string",
+                    "format": "date",
+                    "example": "2020-01-25"
+                },
+                "claim_type": {
+                    "type": "string",
+                    "example": "Residential"
+                },
+                "claim_description": {
+                    "type": "string",
+                    "example": "Claim description - If any"
+                },
+                "claim_amount_requested": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "100000"
+                },
+                "claim_amount_paid": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": "100000"
+                },
+                "payment_receivers_name": {
+                    "type": "string",
+                    "example": "John Doe"
+                },
+                "payment_receivers_nic": {
+                    "type": "string",
+                    "example": "123456789V"
+                },
+                "payee_address": {
+                    "type": "string",
+                    "example": "Example Address, Area."
+                },
+                "claim_status": {
+                    "type": "integer",
+                    "format": "int8",
+                    "example": "0"
+                },
+                "school_census_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "00000"
+                },
+                "school_name": {
+                    "type": "string",
+                    "example": "Example School"
+                },
+                "admission_id": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "00000"
                 }
             },
             "type": "object"
@@ -232,6 +229,10 @@
                     "example": "ABC-123-000"
                 },
                 "school": {
+                    "type": "string",
+                    "example": "Example School"
+                },
+                "schoolAddress": {
                     "type": "string",
                     "example": "Example School, Area."
                 },

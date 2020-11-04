@@ -19,4 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/student/{nsid}', 'StudentController@getStudentByNSID');
 
-Route::post('/claim', 'ClaimController@addClaim');
+Route::post('/claim/add', 'ClaimController@addClaim');

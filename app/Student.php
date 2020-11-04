@@ -16,10 +16,16 @@ class Student extends Model
     public $nsid;
 
     /**
-     * @SWG\Property(example="Example School, Area.")
+     * @SWG\Property(example="Example School")
      * @var string
      */
     private $school;
+
+    /**
+     * @SWG\Property(example="Example School, Area.")
+     * @var string
+     */
+    private $schoolAddress;
 
     /**
      * @SWG\Property(example="00000", format="int32")
