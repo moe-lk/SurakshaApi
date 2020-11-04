@@ -12,7 +12,7 @@ class StudentController extends Controller
 {
     /**
      * @SWG\Get(
-     *     path="/api/student{nsid}",
+     *     path="/api/student/{nsid}",
      *     summary="Search student by NSID",
      *     description="Returns a single student for the provided NSID",
      *     operationId="getStudentByNSID",
