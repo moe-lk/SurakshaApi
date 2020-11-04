@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Student;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use \GuzzleHttp\Exception\ClientException;
-use \stdClass;
 
 class StudentController extends Controller
 {
     /**
      * @SWG\Get(
-     *     path="/api/student{nsid}",
+     *     path="/api/student/{nsid}",
      *     summary="Search student by NSID",
      *     description="Returns a single student for the provided NSID",
      *     operationId="getStudentByNSID",
@@ -33,30 +33,30 @@ class StudentController extends Controller
      */
     public function getStudentByNSID($nsid){
         try {        
-            $student = DB::table('security_users')->where('openemis_no', $nsid)->first();
+            $student_data = DB::table('security_users')->where('openemis_no', $nsid)->first();
     
-            if(!$student) return $this->_sendResponse("Invalid NSID provided or Student not found", 404);
+            if(!$student_data) return $this->_sendResponse("Invalid NSID provided or Student not found", 404);
     
-            $institution_student = DB::table('institution_students')->where('student_id', 93)->first();
+            $institution_student = DB::table('institution_students')->where('student_id', $student_data->id)->first();
             $institution = DB::table('institutions')->where('id', $institution_student->institution_id)->first();                  
     
-            $student_data = new stdClass();
+            $student = new Student();
+
+            $student->nsid = $nsid;
+            $student->student_name_with_initials = $student_data->last_name;
+            $student->student_full_name = $student_data->first_name;
+            $student->student_date_of_birth = $student_data->date_of_birth;
+            $student->school_census_id = $institution->code;
+            $student->school_name = $institution->name;
+            $student->school_address = $institution->address;
+            $student->student_admission_id = $institution_student->admission_id;
+            $student->mothers_name = null;
+            $student->mothers_nic = null;
+            $student->fathers_name = null;
+            $student->fathers_nic = null;
+            $student->legal_guardians_name = null;
     
-            $student_data->nsid = $nsid;
-            $student_data->school = $institution->name;
-            $student_data->schoolAddress = $institution->address;
-            $student_data->censusNo = $institution->code;
-            $student_data->nameWithInitials = $student->last_name;
-            $student_data->fullName = $student->first_name;
-            $student_data->admissionNo = $institution_student->admission_id;
-            $student_data->dob = $student->date_of_birth;
-            $student_data->mothersName = null;
-            $student_data->mothersNIC = null;
-            $student_data->fathersName = null;
-            $student_data->fathersNIC = null;
-            $student_data->guardiansName = null;
-    
-            return $this->_sendResponse(json_encode($student_data), 200);
+            return $this->_sendResponse(json_encode($student), 200);
         }
         catch (ClientException $e) {
             return $this->_sendResponse("Internal server error", 500);
