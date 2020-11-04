@@ -13,77 +13,77 @@ class Student extends Model
      * @SWG\Property(example="ABC-123-000")
      * @var string
      */
-    public $nsid;
-
-    /**
-     * @SWG\Property(example="Example School")
-     * @var string
-     */
-    private $school;
-
-    /**
-     * @SWG\Property(example="Example School, Area.")
-     * @var string
-     */
-    private $schoolAddress;
-
-    /**
-     * @SWG\Property(example="00000", format="int32")
-     * @var int
-     */
-    public $censusNo;
+    private $nsid;
 
     /**
      * @SWG\Property(example="J. Smith")
      * @var string
      */
-    public $nameWithInitials;
+    private $student_name_with_initials;
 
     /**
      * @SWG\Property(example="John Smith")
      * @var string
      */
-    public $fullName;
-
-    /**
-     * @SWG\Property(example="00000", format="int32")
-     * @var int
-     */
-    public $admissionNo;
+    private $student_full_name;
 
     /**
      * @SWG\Property(example="2000-01-15", format="date")
      * @var string
      */
-    private $dob;
+    private $student_date_of_birth;
+
+    /**
+     * @SWG\Property(example="00000", format="int32")
+     * @var int
+     */
+    private $school_census_id;
+
+    /**
+     * @SWG\Property(example="Example School")
+     * @var string
+     */
+    private $school_name;
+
+    /**
+     * @SWG\Property(example="Example School, Area.")
+     * @var string
+     */
+    private $school_address;
+
+    /**
+     * @SWG\Property(example="00000", format="int32")
+     * @var int
+     */
+    private $student_admission_id;
 
     /**
      * @SWG\Property(example="Jane Doe")
      * @var string
      */
-    public $mothersName;
+    private $mothers_name;
 
     /**
      * @SWG\Property(example="123456789V")
      * @var string
      */
-    public $mothersNIC;
+    private $mothers_nic;
 
     /**
      * @SWG\Property(example="John Doe")
      * @var string
      */
-    public $fathersName;
+    private $fathers_name;
 
     /**
      * @SWG\Property(example="123456789V")
      * @var string
      */
-    public $fathersNIC;
+    private $fathers_nic;
 
     /**
      * @SWG\Property(example="Legal Guardian's name - If any")
      * @var string
      */
-    public $guardiansName;
+    private $legal_guardians_name;
 }
