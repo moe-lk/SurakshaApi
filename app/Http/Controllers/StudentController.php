@@ -34,12 +34,28 @@ class StudentController extends Controller
     public function getStudentByNSID($nsid){
         try {        
             $student_data = DB::table('security_users')->where('openemis_no', $nsid)->first();
+            $student_id = $student_data->id;
     
             if(!$student_data) return $this->_sendResponse("Invalid NSID provided or Student not found", 404);
     
-            $institution_student = DB::table('institution_students')->where('student_id', $student_data->id)->first();
+            $institution_student = DB::table('institution_students')->where('student_id', $student_id)->first();
             $institution = DB::table('institutions')->where('id', $institution_student->institution_id)->first();                  
-    
+        
+            $student_guardians = DB::table('student_guardians')->where('student_id', $student_id)->get();
+            $father = null;
+            $mother = null;
+            $guardian = null;
+
+            foreach($student_guardians as $student_guardian) {
+                $student_guardian_data = DB::table('security_users')->where('id', $student_guardian->guardian_id)->first();
+
+                switch($student_guardian->guardian_relation_id) {
+                    case 1: $father = $student_guardian_data; break;
+                    case 2: $mother = $student_guardian_data; break;
+                    case 0: $guardian = $student_guardian_data; break;
+                }
+            }
+            
             $student = new Student();
 
             $student->nsid = $nsid;
@@ -50,11 +66,11 @@ class StudentController extends Controller
             $student->school_name = $institution->name;
             $student->school_address = $institution->address;
             $student->student_admission_id = $institution_student->admission_id;
-            $student->mothers_name = null;
-            $student->mothers_nic = null;
-            $student->fathers_name = null;
-            $student->fathers_nic = null;
-            $student->legal_guardians_name = null;
+            $student->mothers_name = $mother ? $mother->first_name : null;
+            $student->mothers_nic = $mother ? $mother->identity_number : null;
+            $student->fathers_name = $father ? $father->first_name : null;
+            $student->fathers_nic = $father ? $father->identity_number : null;
+            $student->legal_guardians_name = $guardian ? $guardian->first_name : null;
     
             return $this->_sendResponse(json_encode($student), 200);
         }
