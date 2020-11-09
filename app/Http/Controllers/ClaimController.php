@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Claim;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class ClaimController extends Controller
 {
@@ -54,12 +55,17 @@ class ClaimController extends Controller
         $claim->school_name = $request->input('school_name');
         $claim->admission_id = $request->input('admission_id');
 
-        $result = $claim->save();
+        try {
+            $result = $claim->save();
 
-        if($result == 1) {
-            return $this->_sendResponse("Claim added successfully", 200);
+            if($result == 1) {
+                return $this->_sendResponse("Claim added successfully", 200);
+            }
+            else {
+                return $this->_sendResponse("Failed to add the claim", 405);
+            }
         }
-        else {
+        catch (QueryException $qe) {
             return $this->_sendResponse("Failed to add the claim", 405);
         }
     }

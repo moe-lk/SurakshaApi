@@ -34,9 +34,10 @@ class StudentController extends Controller
     public function getStudentByNSID($nsid){
         try {        
             $student_data = DB::table('security_users')->where('openemis_no', $nsid)->first();
-            $student_id = $student_data->id;
-    
+
             if(!$student_data) return $this->_sendResponse("Invalid NSID provided or Student not found", 404);
+
+            $student_id = $student_data->id;
     
             $institution_student = DB::table('institution_students')->where('student_id', $student_id)->first();
             $institution = DB::table('institutions')->where('id', $institution_student->institution_id)->first();                  
