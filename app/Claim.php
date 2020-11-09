@@ -140,12 +140,6 @@ class Claim extends Model
     private $payee_address;
 
     /**
-     * @SWG\Property(example="0", format="int8")
-     * @var int
-     */
-    private $claim_status;
-
-    /**
      * @SWG\Property(example="00000", format="int32")
      * @var int
      */
