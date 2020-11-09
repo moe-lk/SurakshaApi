@@ -12,25 +12,41 @@ To run the server, first a setup is needed:
 
 (2) Change the copied file to `.env`.
 
-(3) Add the following lines at the end of the `.env` file.
+(3) Open `.env`.
+
+(4) Configure the `API_KEY`. The default `API_KEY` is `SurakshaAPI@123`.
 
 ```
-L5_SWAGGER_GENERATE_ALWAYS=true
-SWAGGER_VERSION=2.0
-
-L5_SWAGGER_CONST_HOST=127.0.0.1:8000
+API_KEY=SurakshaAPI@123
 ```
 
-(4) To install `Composer`, run:
+(5) Configure the Database Connection.
+
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+(6) To install `Composer`, run:
 
 ```
 composer install
 ```
 
-(5) To generate the `APP_KEY`, run:
+(7) To generate the `APP_KEY`, run:
 
 ```
 php artisan key:generate
+```
+
+(8) To run the migrations, run:
+
+```
+php artisan migrate
 ```
 
 

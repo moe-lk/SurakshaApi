@@ -50,7 +50,6 @@ class ClaimController extends Controller
         $claim->payment_receivers_name = $request->input('payment_receivers_name');
         $claim->payment_receivers_nic = $request->input('payment_receivers_nic');
         $claim->payee_address = $request->input('payee_address');
-        $claim->claim_status = $request->input('claim_status');
         $claim->school_census_id = $request->input('school_census_id');
         $claim->school_name = $request->input('school_name');
         $claim->admission_id = $request->input('admission_id');
