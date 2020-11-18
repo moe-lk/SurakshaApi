@@ -37,9 +37,11 @@ class StudentInsuranceClaims extends Migration
             $table->integer('school_census_id');
             $table->string('school_name', 255);
             $table->string('admission_id', 12);
-
+            $table->int('insurance_provider', 11);
             $table->unique('claim_id');
             $table->primary(['claim_id', 'nsid']);	
+            $table->foreign('nsid')->references('openemis_no')->on('security_users');
+            $table->foreign('insurance_provider')->references('id')->on('insurance_providers');
         });
     }
 
